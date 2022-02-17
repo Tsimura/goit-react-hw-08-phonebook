@@ -8,10 +8,10 @@ export default function App() {
     <AppWrapper>
       <WorkingSpace>
         <h1>Phonebook</h1>
-        <ContactForm />
+        {/* <ContactForm /> */}
         <h2>Contacts</h2>
-        <Filter />
-        <ContactList />
+        {/* <Filter /> */}
+        {/* <ContactList /> */}
       </WorkingSpace>
       <Toaster
         position="top-center"
@@ -27,3 +27,5 @@ export default function App() {
     </AppWrapper>
   );
 }
+
+// !!!!
