@@ -1,16 +1,16 @@
-import { useEffect, lazy, Suspense } from 'react';
-import { useDispatch } from 'react-redux';
+// import { useEffect, lazy, Suspense } from 'react';
+// import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-import ContactForm from './ContactForm';
-import ContactList from 'components/ContactList';
-import Filter from 'components/Filter';
-import AppBar from './AppBar';
-import { authOperations } from '../redux/auth';
-import LoginView from '../views/LoginView';
-import RegisterView from '../views/RegisterView';
-import HomeView from '../views/HomeView';
-import ContactsPage from '../views/ContactsPage';
+// import ContactForm from './ContactForm';
+// import ContactList from 'components/ContactList';
+// import Filter from 'components/Filter';
+import AppBar from './AppBar/AppBar';
+// import { authOperations } from '../redux/auth';
+import LoginView from '../views/LoginView/LoginView';
+import RegisterView from '../views/RegisterView/RegisterView';
+import HomeView from '../views/HomeView/HomeView';
+import ContactsPage from '../views/ContactsPage/ContactsPage';
 
 // import { AppWrapper, WorkingSpace } from './App.styled';
 

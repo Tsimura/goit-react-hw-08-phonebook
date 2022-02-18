@@ -1,0 +1,11 @@
+.div {
+  display: flex;
+  align-items: center;
+}
+/* avatar: {
+    marginRight: 4,
+  }, */
+.span {
+  font-weight: 700;
+  margin-right: 12px;
+}
