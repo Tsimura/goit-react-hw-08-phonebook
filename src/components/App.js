@@ -5,12 +5,12 @@ import { Toaster } from 'react-hot-toast';
 // import ContactForm from './ContactForm';
 // import ContactList from 'components/ContactList';
 // import Filter from 'components/Filter';
-import AppBar from './AppBar/AppBar';
+import AppBar from './AppBar';
 // import { authOperations } from '../redux/auth';
-import LoginView from '../views/LoginView/LoginView';
-import RegisterView from '../views/RegisterView/RegisterView';
-import HomeView from '../views/HomeView/HomeView';
-import ContactsPage from '../views/ContactsPage/ContactsPage';
+import LoginView from '../views/LoginView';
+import RegisterView from '../views/RegisterView';
+import HomeView from '../views/HomeView';
+import ContactsPage from '../views/ContactsPage';
 
 // import { AppWrapper, WorkingSpace } from './App.styled';
 
