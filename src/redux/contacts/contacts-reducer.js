@@ -31,7 +31,12 @@ const filter = createReducer('', {
   [changeFilter]: (_, { payload }) => payload,
 });
 const error = createReducer(null, {});
-export default combineReducers({ items, loading, filter, error });
+export default combineReducers({
+  items,
+  loading,
+  filter,
+  error,
+});
 
 // =============================================
 // const items = createReducer([], {

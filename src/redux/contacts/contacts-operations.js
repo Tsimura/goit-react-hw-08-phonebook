@@ -51,8 +51,9 @@ const deleteContact = contactId => dispatch => {
 
 // /contacts​/{contactId} Обновить существующий контакт
 
-export default {
+const contactsOperations = {
   fetchContacts,
   addContact,
   deleteContact,
 };
+export default contactsOperations;
