@@ -4,53 +4,46 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 axios.defaults.baseURL = 'https://connections-api.herokuapp.com';
 
-// const token = {
-//   set(token) {
-//     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
-//   },
-//   unset() {
-//     axios.defaults.headers.common.Authorization = '';
-//   },
-// };
+const token = {
+  set(token) {
+    axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+  unset() {
+    axios.defaults.headers.common.Authorization = '';
+  },
+};
 
 // Создать нового пользователя
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
+    token.set(data.token);
     return data;
-    // token.set(response.data.token);
   } catch (error) {
     console.log(error);
   }
 });
 
 // Залогинить пользователя
-// const logIn = credentials => async dispatch => {
-//   dispatch(authActions.loginRequest());
-
-//   try {
-//     const response = await axios.post('/users/login', credentials);
-
-//     token.set(response.data.token);
-//     dispatch(authActions.loginSuccess(response.data));
-//   } catch (error) {
-//     dispatch(authActions.loginError(error.message));
-//   }
-// };
+const logIn = createAsyncThunk('auth/login', async credentials => {
+  try {
+    const { data } = await axios.post('/users/login', credentials);
+    token.set(data.token);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 // Разлогинить пользователя
-// const logOut = () => async dispatch => {
-//   dispatch(authActions.logoutRequest());
-
-//   try {
-//     await axios.post('/users/logout');
-
-//     token.unset();
-//     dispatch(authActions.logoutSuccess());
-//   } catch (error) {
-//     dispatch(authActions.logoutError(error.message));
-//   }
-// };
+const logOut = createAsyncThunk('/users/logout', async () => {
+  try {
+    await axios.post('/users/logout');
+    token.unset();
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 // Получить информацию о текущем пользователе
 // const getCurrentUser = () => async (dispatch, getState) => {
@@ -76,8 +69,8 @@ const register = createAsyncThunk('auth/register', async credentials => {
 
 const operations = {
   register,
-  // logOut,
-  // logIn,
+  logOut,
+  logIn,
   // fetchCurrentUser,
 };
 export default operations;

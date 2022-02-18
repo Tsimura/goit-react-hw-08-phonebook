@@ -58,4 +58,4 @@ export default function App() {
 }
 
 // !!!! user28@mail.com
-// https://youtu.be/ZvfcVZcZUEY?t=1201
+// https://www.youtube.com/watch?v=ZvfcVZcZUEY&t=1201s
