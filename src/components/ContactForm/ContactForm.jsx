@@ -1,15 +1,20 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import { useState } from 'react';
-import { connect } from 'react-redux';
+// import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 // import { addContact } from '../../redux/contacts/contacts-actions';
-import { contactsOperations } from '../../redux/contacts';
+import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 import { Form } from './ContactForm.styled';
-function ContactForm({ onSubmit }) {
+export default function ContactForm() {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
   const nameInputId = shortid.generate();
   const numberInputId = shortid.generate();
+
+  const allContacts = useSelector(contactsSelectors.getAllContacts);
+  const dispatch = useDispatch();
+
   const handleChange = event => {
     const { name, value } = event.target;
     switch (name) {
@@ -25,7 +30,14 @@ function ContactForm({ onSubmit }) {
   };
   const handleSubmit = event => {
     event.preventDefault();
-    onSubmit({ name, number });
+    if (allContacts.find(contact => contact.name === name)) {
+      alert(name + ' is already in contacts');
+      resetForm();
+      return;
+    }
+    // onSubmit({ name, number });
+    console.log({ name, number });
+    dispatch(contactsOperations.addContact({ name, number }));
     resetForm();
   };
   const resetForm = () => {
@@ -64,8 +76,8 @@ function ContactForm({ onSubmit }) {
     </Form>
   );
 }
-ContactForm.propTypes = { onSubmit: PropTypes.func.isRequired };
-const mapDispatchToProps = dispatch => ({
-  onSubmit: value => dispatch(contactsOperations.addContact(value)),
-});
-export default connect(null, mapDispatchToProps)(ContactForm);
+// ContactForm.propTypes = { onSubmit: PropTypes.func.isRequired };
+// const mapDispatchToProps = dispatch => ({
+//   onSubmit: value => dispatch(contactsOperations.addContact(value)),
+// });
+// export default connect(null, mapDispatchToProps)(ContactForm);

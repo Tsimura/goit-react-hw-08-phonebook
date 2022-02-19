@@ -25,19 +25,19 @@ const fetchContacts = () => async dispatch => {
 };
 
 // Создать новый контакт
-const addContact = description => dispatch => {
-  const contact = {
-    description,
-    completed: false,
+const addContact =
+  ({ name, number }) =>
+  async dispatch => {
+    const contact = { name, number };
+
+    dispatch(addContactRequest());
+    try {
+      const { data } = await axios.post('/contacts', contact);
+      dispatch(addContactSuccess(data));
+    } catch (error) {
+      dispatch(addContactError(error.message));
+    }
   };
-
-  dispatch(addContactRequest());
-
-  axios
-    .post('/contact', contact)
-    .then(({ data }) => dispatch(addContactSuccess(data)))
-    .catch(error => dispatch(addContactError(error.message)));
-};
 
 // Удалить контакт.
 const deleteContact = contactId => dispatch => {

@@ -4,7 +4,7 @@ const getLoading = state => state.contacts.loading;
 
 const getFilter = state => state.contacts.filter;
 
-const getAllContacts = state => state.contact.items;
+const getAllContacts = state => state.contacts.items;
 
 const getVisibleContacts = createSelector(
   [getAllContacts, getFilter],

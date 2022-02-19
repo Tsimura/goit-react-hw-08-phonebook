@@ -15,7 +15,7 @@
 // }
 // =======================
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import ContactForm from '../../components/ContactForm';
 import ContactList from '../../components/ContactList';
 import { contactsOperations } from '../../redux/contacts';
@@ -36,7 +36,7 @@ export default function ContactsPage() {
       <ContactForm />
       <h2>Contacts</h2>
       {/* <Filter /> */}
-      {/* <ContactList /> */}
+      <ContactList />
 
       {/* </WorkingSpace> */}
     </>
