@@ -12,6 +12,7 @@ import {
 } from './contacts-actions';
 
 // Получить все контакты пользователя
+// GET ​/contacts
 const fetchContacts = () => async dispatch => {
   dispatch(fetchContactsRequest());
 
@@ -25,6 +26,7 @@ const fetchContacts = () => async dispatch => {
 };
 
 // Создать новый контакт
+// POST ​/contacts
 const addContact =
   ({ name, number }) =>
   async dispatch => {
@@ -39,7 +41,8 @@ const addContact =
     }
   };
 
-// Удалить контакт.
+// Удалить контакт
+// DELETE ​/contacts​/{contactId}
 const deleteContact = contactId => async dispatch => {
   dispatch(deleteContactRequest());
   try {
@@ -50,7 +53,8 @@ const deleteContact = contactId => async dispatch => {
   }
 };
 
-// /contacts​/{contactId} Обновить существующий контакт
+// Обновить существующий контакт
+// /contacts​/{contactId}
 
 const contactsOperations = {
   fetchContacts,

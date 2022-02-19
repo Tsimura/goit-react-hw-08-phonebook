@@ -6,7 +6,7 @@ import {
   changeFilter,
   addContactRequest,
   addContactSuccess,
-  // addContactError,
+  addContactError,
   deleteContactRequest,
   deleteContactSuccess,
   deleteContactError,

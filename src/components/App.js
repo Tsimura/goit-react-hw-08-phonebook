@@ -10,7 +10,7 @@ import AppBar from './AppBar';
 import LoginView from '../views/LoginView';
 import RegisterView from '../views/RegisterView';
 import HomeView from '../views/HomeView';
-import ContactsPage from '../views/ContactsPage';
+import ContactsPage from '../views/ContactsView';
 
 // import { AppWrapper, WorkingSpace } from './App.styled';
 

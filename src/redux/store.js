@@ -14,12 +14,6 @@ import storage from 'redux-persist/lib/storage';
 import contactsReducer from './contacts/contacts-reducer';
 import { authReducer } from './auth';
 
-// const contactsPersistConfig = {
-//   key: 'contactsArr',
-//   storage,
-//   blacklist: ['filter'],
-// };
-
 const authPersistConfig = {
   key: 'auth',
   storage,

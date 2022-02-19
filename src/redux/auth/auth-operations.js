@@ -14,6 +14,7 @@ const token = {
 };
 
 // Создать нового пользователя
+// POST ​/users​/signup
 const register = createAsyncThunk('auth/register', async credentials => {
   try {
     const { data } = await axios.post('/users/signup', credentials);
@@ -25,6 +26,7 @@ const register = createAsyncThunk('auth/register', async credentials => {
 });
 
 // Залогинить пользователя
+// POST ​/users​/login
 const logIn = createAsyncThunk('auth/login', async credentials => {
   try {
     const { data } = await axios.post('/users/login', credentials);
@@ -36,6 +38,7 @@ const logIn = createAsyncThunk('auth/login', async credentials => {
 });
 
 // Разлогинить пользователя
+// POST ​/users​/logout
 const logOut = createAsyncThunk('/users/logout', async () => {
   try {
     await axios.post('/users/logout');
@@ -45,7 +48,9 @@ const logOut = createAsyncThunk('/users/logout', async () => {
   }
 });
 
+// ===============================================
 // Получить информацию о текущем пользователе
+// GET ​/users​/current
 // const getCurrentUser = () => async (dispatch, getState) => {
 //   const {
 //     auth: { token: persistedToken },

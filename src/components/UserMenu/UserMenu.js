@@ -18,13 +18,3 @@ export default function UserMenu() {
     </div>
   );
 }
-// const mapStateToProps = state => ({
-//   name: authSelectors.getUserName(state),
-//   avatar: defaultAvatar,
-// });
-
-// const mapDispatchToProps = {
-//   onLogout: authOperations.logOut,
-// };
-
-// export default connect(mapStateToProps, mapDispatchToProps)(UserMenu);

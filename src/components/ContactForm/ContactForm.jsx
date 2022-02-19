@@ -1,9 +1,7 @@
 // import PropTypes from 'prop-types';
 import shortid from 'shortid';
 import { useState } from 'react';
-// import { connect } from 'react-redux';
 import { useSelector, useDispatch } from 'react-redux';
-// import { addContact } from '../../redux/contacts/contacts-actions';
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
 import { Form } from './ContactForm.styled';
 export default function ContactForm() {
@@ -35,7 +33,6 @@ export default function ContactForm() {
       resetForm();
       return;
     }
-    // onSubmit({ name, number });
     console.log({ name, number });
     dispatch(contactsOperations.addContact({ name, number }));
     resetForm();
@@ -76,8 +73,3 @@ export default function ContactForm() {
     </Form>
   );
 }
-// ContactForm.propTypes = { onSubmit: PropTypes.func.isRequired };
-// const mapDispatchToProps = dispatch => ({
-//   onSubmit: value => dispatch(contactsOperations.addContact(value)),
-// });
-// export default connect(null, mapDispatchToProps)(ContactForm);

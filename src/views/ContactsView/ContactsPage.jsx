@@ -1,5 +1,4 @@
 // import React from 'react';
-
 // export default function ContactsPage() {
 //   return (
 //     <>
@@ -15,14 +14,12 @@
 // }
 // =======================
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import ContactForm from '../../components/ContactForm';
 import ContactList from '../../components/ContactList';
 import { contactsOperations } from '../../redux/contacts';
 // import Filter from 'components/Filter';
-
 // import { authOperations } from '../redux/auth';
-
 // import { AppWrapper, WorkingSpace } from './App.styled';
 
 export default function ContactsPage() {
