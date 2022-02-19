@@ -29,9 +29,9 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<HomeView />} />
-        <Route path="/login" element={<LoginView />} />
-        <Route path="/register" element={<RegisterView />} />
         <Route path="/contacts" element={<ContactsPage />} />
+        <Route path="/register" element={<RegisterView />} />
+        <Route path="/login" element={<LoginView />} />
       </Routes>
 
       {/* <h1>Phonebook</h1> */}
