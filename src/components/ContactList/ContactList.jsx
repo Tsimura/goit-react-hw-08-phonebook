@@ -4,9 +4,11 @@ import { useSelector } from 'react-redux';
 import ContactListItem from '../ContactListItem';
 // import { deleteContact } from '../../redux/contacts/contacts-actions';
 import { contactsSelectors } from '../../redux/contacts';
+// import { contactsOperations } from '../../redux/contacts';
 import { ContactListWrapper } from './ContactList.styled';
 export default function ContactList() {
   const contacts = useSelector(contactsSelectors.getVisibleContacts);
+
   return (
     <ContactListWrapper>
       {contacts.length > 0 ? (

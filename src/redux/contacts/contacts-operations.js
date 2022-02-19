@@ -40,13 +40,14 @@ const addContact =
   };
 
 // Удалить контакт.
-const deleteContact = contactId => dispatch => {
+const deleteContact = contactId => async dispatch => {
   dispatch(deleteContactRequest());
-
-  axios
-    .delete(`/contact/${contactId}`)
-    .then(() => dispatch(deleteContactSuccess(contactId)))
-    .catch(error => dispatch(deleteContactError(error.message)));
+  try {
+    await axios.delete(`/contacts/${contactId}`);
+    dispatch(deleteContactSuccess(contactId));
+  } catch (error) {
+    dispatch(deleteContactError(error.message));
+  }
 };
 
 // /contacts​/{contactId} Обновить существующий контакт

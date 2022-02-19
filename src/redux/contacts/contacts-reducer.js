@@ -4,12 +4,12 @@ import { createReducer } from '@reduxjs/toolkit';
 // import { addContact, deleteContact, changeFilter } from './contacts-actions';
 import {
   changeFilter,
-  // addContactRequest,
+  addContactRequest,
   addContactSuccess,
   // addContactError,
-  // deleteContactRequest,
+  deleteContactRequest,
   deleteContactSuccess,
-  // deleteContactError,
+  deleteContactError,
   fetchContactsRequest,
   fetchContactsSuccess,
   fetchContactsError,
@@ -26,6 +26,9 @@ const loading = createReducer(false, {
   [fetchContactsRequest]: () => true,
   [fetchContactsSuccess]: () => false,
   [fetchContactsError]: () => false,
+  [deleteContactRequest]: () => true,
+  [deleteContactSuccess]: () => false,
+  [deleteContactError]: () => false,
 });
 const filter = createReducer('', {
   [changeFilter]: (_, { payload }) => payload,

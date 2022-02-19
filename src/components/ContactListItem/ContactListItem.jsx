@@ -1,10 +1,16 @@
 import PropTypes from 'prop-types';
+import { useDispatch } from 'react-redux';
 import { ImUserMinus } from 'react-icons/im';
-const ContactListItem = ({ id, name, number, onDelete }) => {
+import { contactsOperations } from '../../redux/contacts';
+const ContactListItem = ({ id, name, number }) => {
+  const dispatch = useDispatch();
   return (
     <>
       {name}: {number}
-      <button type="button" onClick={() => onDelete(id)}>
+      <button
+        type="button"
+        onClick={() => dispatch(contactsOperations.deleteContact(id))}
+      >
         <ImUserMinus size={18}></ImUserMinus>
       </button>
     </>
@@ -14,6 +20,5 @@ ContactListItem.protoTypes = {
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
-  onDelete: PropTypes.func.isRequired,
 };
 export default ContactListItem;
