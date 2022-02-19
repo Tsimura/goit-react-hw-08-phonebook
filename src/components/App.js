@@ -1,18 +1,19 @@
-// import { useEffect, lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 // import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
-// import ContactForm from './ContactForm';
-// import ContactList from 'components/ContactList';
-// import Filter from 'components/Filter';
 import AppBar from './AppBar';
 // import { authOperations } from '../redux/auth';
-import LoginView from '../views/LoginView';
-import RegisterView from '../views/RegisterView';
-import HomeView from '../views/HomeView';
-import ContactsPage from '../views/ContactsView';
 
-// import { AppWrapper, WorkingSpace } from './App.styled';
+// Написати функці.-шаблон для lazy!!!
+const LoginView = lazy(() => import('../views/LoginView/LoginView.jsx'));
+const RegisterView = lazy(() =>
+  import('../views/RegisterView/RegisterView.jsx')
+);
+const HomeView = lazy(() => import('../views/HomeView/HomeView.jsx'));
+const ContactsPage = lazy(() =>
+  import('../views/ContactsView/ContactsPage.jsx')
+);
 
 export default function App() {
   // const dispatch = useDispatch();
@@ -22,25 +23,18 @@ export default function App() {
   // }, [dispatch]);
 
   return (
-    // <AppWrapper>
-    // <WorkingSpace>
     <>
       <AppBar />
 
-      <Routes>
-        <Route path="/" element={<HomeView />} />
-        <Route path="/contacts" element={<ContactsPage />} />
-        <Route path="/register" element={<RegisterView />} />
-        <Route path="/login" element={<LoginView />} />
-      </Routes>
+      <Suspense fallback={<></>}>
+        <Routes>
+          <Route path="/" element={<HomeView />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/register" element={<RegisterView />} />
+          <Route path="/login" element={<LoginView />} />
+        </Routes>
+      </Suspense>
 
-      {/* <h1>Phonebook</h1> */}
-      {/* <ContactForm /> */}
-      {/* <h2>Contacts</h2> */}
-      {/* <Filter /> */}
-      {/* <ContactList /> */}
-
-      {/* </WorkingSpace> */}
       <Toaster
         position="top-center"
         reverseOrder={false}
@@ -53,7 +47,6 @@ export default function App() {
         }}
       />
     </>
-    // </AppWrapper>
   );
 }
 

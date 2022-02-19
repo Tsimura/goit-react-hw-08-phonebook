@@ -9,7 +9,6 @@ const getAllContacts = state => state.contacts.items;
 const getVisibleContacts = createSelector(
   [getAllContacts, getFilter],
   (contacts, filter) => {
-    console.log('Составляю новый массив видимых контактов');
     const normalizedFilter = filter.toLowerCase();
 
     return contacts.filter(({ name }) =>
