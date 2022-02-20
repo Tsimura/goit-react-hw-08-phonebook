@@ -1,19 +1,18 @@
-import { useEffect, lazy, Suspense } from 'react';
+import { lazy, Suspense } from 'react';
+// import { useEffect, lazy, Suspense } from 'react';
 // import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import { Toaster } from 'react-hot-toast';
 import AppBar from './AppBar';
 // import { authOperations } from '../redux/auth';
 
-// Написати функці.-шаблон для lazy!!!
-const LoginView = lazy(() => import('../views/LoginView/LoginView.jsx'));
-const RegisterView = lazy(() =>
-  import('../views/RegisterView/RegisterView.jsx')
-);
-const HomeView = lazy(() => import('../views/HomeView/HomeView.jsx'));
-const ContactsPage = lazy(() =>
-  import('../views/ContactsView/ContactsPage.jsx')
-);
+const createChunk = componentName => {
+  return lazy(() => import(`../views/${componentName}`));
+};
+const LoginView = createChunk('LoginView');
+const RegisterView = createChunk('RegisterView');
+const HomeView = createChunk('HomeView');
+const ContactsView = createChunk('ContactsView');
 
 export default function App() {
   // const dispatch = useDispatch();
@@ -29,7 +28,7 @@ export default function App() {
       <Suspense fallback={<></>}>
         <Routes>
           <Route path="/" element={<HomeView />} />
-          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/contacts" element={<ContactsView />} />
           <Route path="/register" element={<RegisterView />} />
           <Route path="/login" element={<LoginView />} />
         </Routes>

@@ -20,7 +20,7 @@ import ContactList from '../../components/ContactList';
 import { contactsOperations } from '../../redux/contacts';
 import Filter from 'components/Filter';
 // import { authOperations } from '../redux/auth';
-import { AppWrapper, WorkingSpace } from './ContactsPage.styled';
+import { AppWrapper, WorkingSpace } from './ContactsView.styled';
 
 export default function ContactsPage() {
   const dispatch = useDispatch();
