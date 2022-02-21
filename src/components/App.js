@@ -1,10 +1,9 @@
 import { Toaster } from 'react-hot-toast';
-import { lazy, Suspense } from 'react';
-// import { useEffect, lazy, Suspense } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useEffect, lazy, Suspense } from 'react';
+import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import AppBar from './AppBar';
-// import { authOperations } from '../redux/auth';
+import { authOperations } from '../redux/auth';
 
 const createChunk = componentName => {
   return lazy(() => import(`../views/${componentName}`));
@@ -15,11 +14,11 @@ const HomeView = createChunk('HomeView');
 const ContactsView = createChunk('ContactsView');
 
 export default function App() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   dispatch(authOperations.fetchCurrentUser());
-  // }, [dispatch]);
+  useEffect(() => {
+    dispatch(authOperations.fetchCurrentUser());
+  }, [dispatch]);
 
   return (
     <>

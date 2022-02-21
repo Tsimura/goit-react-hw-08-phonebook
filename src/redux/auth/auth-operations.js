@@ -51,31 +51,28 @@ const logOut = createAsyncThunk('/users/logout', async () => {
 // ===============================================
 // Получить информацию о текущем пользователе
 // GET ​/users​/current
-
 const fetchCurrentUser = createAsyncThunk(
   '/users/current',
-  async (_, thunkApI) => {}
+  async (_, thunkApI) => {
+    const state = thunkApI.getState();
+    const persistedToken = state.auth.token;
+    console.log('state:', state);
+    console.log('persistedToken:', persistedToken);
+
+    if (persistedToken === null) {
+      return thunkApI.rejectWithValue();
+    }
+
+    token.set(persistedToken);
+    try {
+      const { data } = await axios.get('/users/current');
+      console.log('data:', data);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
 );
-// const getCurrentUser = () => async (dispatch, getState) => {
-//   const {
-//     auth: { token: persistedToken },
-//   } = getState();
-
-//   if (!persistedToken) {
-//     return;
-//   }
-
-//   token.set(persistedToken);
-//   dispatch(authActions.getCurrentUserRequest());
-
-//   try {
-//     const response = await axios.get('/users/current');
-
-//     dispatch(authActions.getCurrentUserSuccess(response.data));
-//   } catch (error) {
-//     dispatch(authActions.getCurrentUserError(error.message));
-//   }
-// };
 
 const operations = {
   register,
