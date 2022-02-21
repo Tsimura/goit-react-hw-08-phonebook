@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/708.9066fab2.chunk.css","mappings":"AAAA,KACE,WACF,CAEA,MACE,YAAa,CACb,qBAAsB,CACtB,kBACF","sources":["views/RegisterView/RegisterView.module.css"],"sourcesContent":["form {\n  width: 320px;\n}\n\nlabel {\n  display: flex;\n  flex-direction: column;\n  margin-bottom: 15px;\n}\n"],"names":[],"sourceRoot":""}
