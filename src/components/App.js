@@ -1,8 +1,8 @@
+import { Toaster } from 'react-hot-toast';
 import { lazy, Suspense } from 'react';
 // import { useEffect, lazy, Suspense } from 'react';
 // import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
 import AppBar from './AppBar';
 // import { authOperations } from '../redux/auth';
 
@@ -50,4 +50,4 @@ export default function App() {
 }
 
 // !!!! user28@mail.com
-// https://www.youtube.com/watch?v=ZvfcVZcZUEY&t=1201s
+// https://youtu.be/ZvfcVZcZUEY?t=5238

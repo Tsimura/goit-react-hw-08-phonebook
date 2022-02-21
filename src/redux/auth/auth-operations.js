@@ -51,6 +51,11 @@ const logOut = createAsyncThunk('/users/logout', async () => {
 // ===============================================
 // Получить информацию о текущем пользователе
 // GET ​/users​/current
+
+const fetchCurrentUser = createAsyncThunk(
+  '/users/current',
+  async (_, thunkApI) => {}
+);
 // const getCurrentUser = () => async (dispatch, getState) => {
 //   const {
 //     auth: { token: persistedToken },
@@ -76,6 +81,6 @@ const operations = {
   register,
   logOut,
   logIn,
-  // fetchCurrentUser,
+  fetchCurrentUser,
 };
 export default operations;
