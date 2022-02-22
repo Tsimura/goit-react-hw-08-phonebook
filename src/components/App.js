@@ -36,7 +36,7 @@ export default function App() {
           <Route
             path="/contacts"
             element={
-              <PrivateRoute>
+              <PrivateRoute redirectTo="/login">
                 <ContactsView />
               </PrivateRoute>
             }
@@ -53,9 +53,8 @@ export default function App() {
 
           <Route
             path="/register"
-            restricted
             element={
-              <PublicRoute>
+              <PublicRoute restricted>
                 <RegisterView />
               </PublicRoute>
             }
@@ -63,9 +62,8 @@ export default function App() {
 
           <Route
             path="/login"
-            restricted
             element={
-              <PublicRoute>
+              <PublicRoute restricted redirectTo="/contacts">
                 <LoginView />
               </PublicRoute>
             }
@@ -89,4 +87,4 @@ export default function App() {
 }
 
 // !!!! user28@mail.com
-// https://youtu.be/nve1tVdc2W0?t=1456
+// https://youtu.be/nve1tVdc2W0?t=2196
