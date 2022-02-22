@@ -3,6 +3,8 @@ import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch } from 'react-redux';
 import { Routes, Route } from 'react-router-dom';
 import AppBar from './AppBar';
+import PrivateRoute from './PrivateRoute/PrivateRoute';
+import PublicRoute from './PublicRoute/PublicRoute';
 import { authOperations } from '../redux/auth';
 
 const createChunk = componentName => {
@@ -26,10 +28,48 @@ export default function App() {
 
       <Suspense fallback={<></>}>
         <Routes>
-          <Route path="/" element={<HomeView />} />
-          <Route path="/contacts" element={<ContactsView />} />
-          <Route path="/register" element={<RegisterView />} />
-          <Route path="/login" element={<LoginView />} />
+          {/* <Route path="/register" element={<RegisterView />} /> */}
+          {/* <Route path="/login" element={<LoginView />} /> */}
+          {/* <Route path="/" element={<HomeView />} /> */}
+          {/* <Route path="/contacts" element={<ContactsView />} /> */}
+
+          <Route
+            path="/contacts"
+            element={
+              <PrivateRoute>
+                <ContactsView />
+              </PrivateRoute>
+            }
+          />
+
+          <Route
+            path="/"
+            element={
+              <PublicRoute>
+                <HomeView />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/register"
+            restricted
+            element={
+              <PublicRoute>
+                <RegisterView />
+              </PublicRoute>
+            }
+          />
+
+          <Route
+            path="/login"
+            restricted
+            element={
+              <PublicRoute>
+                <LoginView />
+              </PublicRoute>
+            }
+          />
         </Routes>
       </Suspense>
 
@@ -49,4 +89,4 @@ export default function App() {
 }
 
 // !!!! user28@mail.com
-// https://youtu.be/ZvfcVZcZUEY?t=5238
+// https://youtu.be/nve1tVdc2W0?t=1456
