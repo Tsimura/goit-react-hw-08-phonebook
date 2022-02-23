@@ -1,5 +1,6 @@
 // import PropTypes from 'prop-types';
 import shortid from 'shortid';
+import toast from 'react-hot-toast';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { contactsOperations, contactsSelectors } from '../../redux/contacts';
@@ -26,15 +27,27 @@ export default function ContactForm() {
         return;
     }
   };
+  const duplicateNameChecking = name =>
+    allContacts.find(
+      contact => contact.name.toLowerCase() === name.toLowerCase()
+    );
+
+  const duplicateNumberChecking = number =>
+    allContacts.find(contact => contact.number === number);
+
   const handleSubmit = event => {
     event.preventDefault();
-    if (allContacts.find(contact => contact.name === name)) {
-      alert(name + ' is already in contacts');
-      resetForm();
-      return;
-    }
-    console.log({ name, number });
-    dispatch(contactsOperations.addContact({ name, number }));
+    if (duplicateNameChecking(name)) {
+      toast.error(`Sorry, but user ${name} name is already in contacts.`);
+    } else if (duplicateNumberChecking(number)) {
+      toast.error(
+        `Sorry, but user with ${number} phone is already in contacts.`
+      );
+    } else
+      dispatch(contactsOperations.addContact({ name, number })) &&
+        toast.success(
+          `User ${name} with phone number ${number} has been successfully added to the phone book.`
+        );
     resetForm();
   };
   const resetForm = () => {
